@@ -1,10 +1,11 @@
-/* int count_valid_string (char *filename, char *charset, int n).
+/*
+int count_valid_string (char *filename, char *charset, int n).
 Tale funzione deve lanciare un numero di thread/processi pari a n
 per leggere dal file filename una sequenza di stringhe e, per ciascuna di esse,
 contare quante di queste contengono tutti i caratteri contenuti nella stringa charset.
 infine, la funzione stampa su standard output e ritorna il numero totale di stringhe identificato.
 Il file è tale per cui, ciascuna stringa è lunga 50 caratteri incluso il terminatore di linea.
- */
+*/
 
 #include <unistd.h>
 #include <stdio.h>
@@ -32,7 +33,6 @@ int find(char c, char *buffer)
         printf("c = %c,  buffer[%d] = %c \n", c, i, buffer[i]);
         if (c == buffer[i])
         {
-            printf("sono qui \n");
             return 1;
         }
     }
@@ -68,7 +68,6 @@ int count_valid_string(char *filename, char *charset)
                 count = 0;
                 break;
             }
-            printf("eccomi: %d \n", count);
         }
 
         if (count == 1)

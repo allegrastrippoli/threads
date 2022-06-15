@@ -1,3 +1,29 @@
+/*
+Nei sistemi operativi UNIX, /dev/urandom è un dispositivo a caratteri (char device)
+virtuale in grado di generare numeri casuali. Nello specifico, l’operazione di lettura
+dal relativo file produce byte casuali. Scrivere un programma C che genera un file con
+contenuto interamente randomico. Il programma:
+
+    -prende come parametri da linea di comando: un numero N e una stringa S da usare come nome del file da creare;
+    -crea un file S contenente N byte randomici;
+    -utilizza il dispositivo /dev/random come sorgente di numeri pseudo-casuali.
+
+
+
+Dato un file binario contenente un sequenza di 2^15 interi di tipo short, scrivere
+un programma che crea N processi o threads, i quali leggono il contenuto del file ed individuano
+il valore minimo e massimo contenuto nel file. Nel fornire una soluzione rispettare i seguenti vincoli:
+
+    -ciascun intero non può essere letto da più di un thread/processo;
+    -ciascun thread/processo può leggere il medesimo intero al più una volta;
+    -ciascun thread/processo può allocare memoria nell’heap per al più 512 byte;
+    -N è un parametro definito a tempo di compilazione o tramite linea di comando;
+    -N è minore o uguale a 8;
+    -è ammesso allocare di variabili globali (data) e locali (stack) per memorizzare tipi primitivi (puntatori, int, short, char, long, etc.) per al più 128 byte.
+
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>

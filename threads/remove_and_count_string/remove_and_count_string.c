@@ -18,9 +18,9 @@
 
 int fd = -1;
 int global_count = 0;
-// pthread_spinlock_t ptspin;
+pthread_spinlock_t ptspin;
 
-/*void acquire() {
+*void acquire() {
 
     pthread_spin_lock(&ptspin);
 }
@@ -28,7 +28,7 @@ int global_count = 0;
 void release() {
 
     pthread_spin_unlock(&ptspin);
-}*/
+}
 
 void remove_you(char c, char *string)
 {
@@ -92,9 +92,9 @@ void *foo(void *par)
         }
     }
 
-    // acquire();
+    acquire();
     global_count += count;
-    // release();
+    release();
 
     free(buffer);
 }
@@ -102,7 +102,7 @@ void *foo(void *par)
 void open_file(char *namefile, char *charset, int n)
 {
 
-    // pthread_spin_init(&ptspin, PTHREAD_PROCESS_PRIVATE);
+    pthread_spin_init(&ptspin, PTHREAD_PROCESS_PRIVATE);
 
     fd = open(namefile, O_RDONLY);
 
@@ -114,7 +114,7 @@ void open_file(char *namefile, char *charset, int n)
     for (int i = 0; i < n; i++)
         pthread_join(array[i], NULL);
 
-    // pthread_spin_destroy(&ptspin);
+    pthread_spin_destroy(&ptspin);
 
     close(fd);
 }
@@ -123,6 +123,6 @@ int main(int argc, char *argv[])
 {
 
     char charset[] = "123";
-    open_file("b.txt", charset, 1);
+    open_file("b.txt", charset, 8);
     printf("%d \n", global_count);
 }

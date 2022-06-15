@@ -1,3 +1,11 @@
+/*
+Si scriva una funzione C con la seguente interfaccia void file_check(char *file_name, int num_threads).
+Tale funzione dovrà lanciare num_thread nuovi threads, in modo che ciascuno di essi legga stringhe dallo
+standard input, e per ogni stringa letta verifichi l’occorrenza di tale stringa all’interno di ciascuna
+riga del file il cui path è identificato tramite il parametro file_name, e stampi la stringa su standard
+ output in caso affermativo.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -12,13 +20,8 @@
 		exit(1);     \
 	} while (0)
 
-/* quando leggo da file:
-esempio: mangia\n\0dorme\n\0piove\n\0cresce\n\0ascolta\n\0legge\n\0
- quando l'utente inserisce il dato si
-esempio: mangia\n */
-
 FILE *fd;
-// pthread_spinlock_t ptspin;
+pthread_spinlock_t ptspin;
 
 void *foo(void *par)
 {
@@ -30,9 +33,9 @@ void *foo(void *par)
 
 	do
 	{
-		// pthread_spin_lock(&ptspin);
+		pthread_spin_lock(&ptspin);
 		res = fgets(buffer, length, fd);
-		// pthread_spin_unlock(&ptspin);
+		pthread_spin_unlock(&ptspin);
 
 		if (strcmp(buffer, (char *)par) == 0)
 		{
@@ -48,7 +51,7 @@ void *foo(void *par)
 void file_check(char *file_name, int n_threads)
 {
 
-	// pthread_spin_init(&ptspin, PTHREAD_PROCESS_PRIVATE);
+	pthread_spin_init(&ptspin, PTHREAD_PROCESS_PRIVATE);
 
 	fd = fopen(file_name, "r");
 
@@ -79,7 +82,7 @@ void file_check(char *file_name, int n_threads)
 
 	} while (fine == 1);
 
-	// pthread_spin_destroy(&ptspin);
+	pthread_spin_destroy(&ptspin);
 
 	fclose(fd);
 	free(array);

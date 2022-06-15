@@ -1,3 +1,10 @@
+/*
+Si scriva una funzione di codice C.
+Tale funzione deve lanciare un numero di thread/processi pari 
+a n per leggere dal file filename una sequenza di stringhe e 
+contare quante di queste siano palindrome. Infine, la funzione 
+stampa su standard output e ritorna il numero totale di stringhe identificato.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>

@@ -34,16 +34,14 @@ int main(int argc, const char *argv[])
         if (size < 0)
             abort("msg");
 
-        printf("ECCOMI");
-
         if (buffer[strlen(buffer) - 1] != EOF)
         {
-            printf("length di 123454321: expected 10 got %d \n", strlen(buffer));
+            //printf("length di 123454321: expected 10 got %d \n", strlen(buffer));
             buffer[strlen(buffer) - 1] = '\0';
-            printf("length di 123454321: expected 9 got %d \n", strlen(buffer));
+            //printf("length di 123454321: expected 9 got %d \n", strlen(buffer));
         }
         int length = strlen(buffer) - 1;
-        printf("length di 123454321: expected 8 got %d \n", length);
+        //printf("length di 123454321: expected 8 got %d \n", length);
         for (int i = 0; buffer[i] != '\0'; i++)
             printf("%c ", buffer[i]);
         for (int i = 0; buffer[i] != '\0'; i++)

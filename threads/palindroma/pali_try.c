@@ -34,14 +34,14 @@ int main(int argc, const char *argv[])
         if (size < 0)
             abort("msg");
 
-        printf("ultimo carattere: %c \n", buffer[strlen(buffer) - 1]);
+        // printf("ultimo carattere: %c \n", buffer[strlen(buffer) - 1]);
         buffer[strlen(buffer) - 1] = '\0';
         int length = strlen(buffer);
-        printf("expected: 9 got: %d \n", length);
+        // printf("expected: 9 got: %d \n", length);
 
         for (int i = 0; i < length / 2; i++)
         {
-            printf("buffer[%d] = %c, buffer[%d] = %c \n", i, buffer[i], length - 1 - i, buffer[length - 1 - i]);
+            // printf("buffer[%d] = %c, buffer[%d] = %c \n", i, buffer[i], length - 1 - i, buffer[length - 1 - i]);
             if (buffer[i] != buffer[length - 1 - i])
             {
                 check = 0;
@@ -51,7 +51,6 @@ int main(int argc, const char *argv[])
 
         if (check == 1)
         {
-            printf("ci sono \n");
             count_locale++;
         }
     }
