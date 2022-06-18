@@ -55,10 +55,9 @@ void *foo(void *par)
 
     while (size > 0)
     {
-        acquire();
+    
         size = read(fd, buffer, chunk);
-        release();
-
+       
         if (size < 0)
             abort(" E1 \n");
 
